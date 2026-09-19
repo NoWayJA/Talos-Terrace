@@ -42,7 +42,7 @@ rusqlite = { version = "0.40", features = ["bundled"] }
 # Vault: one OS keychain entry (the master key), AES-256-GCM blobs in SQLite.
 # keyring 4 enables the native stores for macOS, Windows and Linux by default.
 keyring = "4.2"
-aes-gcm = "0.10"
+aes-gcm = "0.11"
 zeroize = { version = "1.8", features = ["derive"] }
 base64 = "0.22"
 

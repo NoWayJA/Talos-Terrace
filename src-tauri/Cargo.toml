@@ -44,7 +44,7 @@ rusqlite = { version = "0.40", features = ["bundled"] }
 keyring = "4.2"
 aes-gcm = "0.10"
 zeroize = { version = "1.8", features = ["derive"] }
-base64 = "0.22"
+base64 = "0.23"
 
 # Ollama over HTTP. reqwest 0.13 defaults to rustls with the platform verifier.
 reqwest = { version = "0.13", features = ["json"] }

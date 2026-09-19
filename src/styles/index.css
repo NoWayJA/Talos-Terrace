@@ -1,0 +1,19 @@
+/**
+ * Terrace styles. Import order matters for the cascade:
+ * tokens, base, layouts, components. Pattern lifted from Modz (NoWayJA/Modz, MIT).
+ */
+@import './tokens.css';
+@import './base.css';
+
+@import './layouts/app.css';
+@import './layouts/canvas.css';
+
+@import './components/sidebar.css';
+@import './components/button.css';
+@import './components/badge.css';
+@import './components/input.css';
+@import './components/palette.css';
+@import './components/properties.css';
+@import './components/gauge.css';
+@import './components/settings.css';
+@import './components/error-screen.css';

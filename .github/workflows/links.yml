@@ -1,0 +1,22 @@
+name: Documentation links
+
+# Documentation sites move (Talos's did in 2025). Check every link Terrace ships once a week
+# and on demand; a failure here is a bug to fix in src/pages/Canvas/docs.ts.
+on:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    name: Every documentation link resolves
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+      - run: npm run links:check

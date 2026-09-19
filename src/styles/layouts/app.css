@@ -1,0 +1,133 @@
+/* App shell: sidebar plus content. Lifted from Modz (NoWayJA/Modz, MIT) layouts/app.css. */
+.app-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.app-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-bg-primary);
+}
+
+/* Canvas page */
+.canvas-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.canvas-page__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+  height: var(--header-height);
+  padding: 0 var(--spacing-5);
+  border-bottom: 1px solid var(--color-border-primary);
+  background: var(--color-bg-secondary);
+  flex-shrink: 0;
+}
+
+.canvas-page__heading {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  min-width: 0;
+}
+
+.canvas-page__title {
+  font-size: var(--font-size-lg);
+  white-space: nowrap;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Alerts and watch failures, spelled out under the header when someone opens them. */
+.canvas-page__strip {
+  border-bottom: 1px solid var(--color-border-primary);
+  background: var(--color-bg-secondary);
+  padding: var(--spacing-2) var(--spacing-5);
+  font-size: var(--font-size-sm);
+  max-height: 160px;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.canvas-page__strip ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.canvas-page__strip-item--error {
+  color: var(--color-error);
+}
+
+.canvas-page__strip-item--warn {
+  color: var(--color-warning);
+}
+
+.canvas-page__strip-item dt {
+  display: inline;
+  font-weight: var(--font-weight-medium);
+}
+
+.canvas-page__strip-item dd {
+  display: inline;
+  overflow-wrap: anywhere;
+}
+
+.badge--button {
+  cursor: pointer;
+  border: none;
+  font: inherit;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.canvas-page__meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  white-space: nowrap;
+}
+
+/* One badge per watched source, kept beside the Refresh button. */
+.canvas-page__live {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-left: auto;
+}
+
+.canvas-page__body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+/* The first-run notice: shown until either API has answered once. */
+.canvas-page__notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-3) var(--spacing-5);
+  border-bottom: 1px solid var(--color-border-primary);
+  background: var(--color-accent-subtle);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+}
+
+.canvas-page__notice p {
+  max-width: 64ch;
+}

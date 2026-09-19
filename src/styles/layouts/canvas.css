@@ -1,0 +1,308 @@
+/**
+ * The canvas. React Flow overrides lifted from Modz (NoWayJA/Modz, MIT)
+ * layouts/workflows.css lines 402 to 700, namespaced under .terrace-canvas, plus the
+ * layer bands and fact nodes that are Terrace's own.
+ */
+.terrace-canvas {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  background: var(--color-bg-canvas);
+}
+
+.terrace-canvas .react-flow {
+  background: var(--color-bg-canvas);
+}
+
+.terrace-canvas .react-flow__node {
+  cursor: pointer;
+}
+
+.terrace-canvas .react-flow__node-layer {
+  cursor: default;
+}
+
+.terrace-canvas .react-flow__edge-path {
+  stroke: var(--color-text-tertiary);
+  stroke-width: 2px;
+}
+
+.terrace-canvas .react-flow__edge:hover .react-flow__edge-path {
+  stroke: var(--color-text-secondary);
+}
+
+.terrace-canvas .react-flow__edge.selected .react-flow__edge-path {
+  stroke: var(--color-accent);
+}
+
+.terrace-canvas .react-flow__connection-path {
+  stroke: var(--color-accent);
+  stroke-width: 2px;
+}
+
+.terrace-canvas .react-flow__background {
+  color: var(--color-border-primary);
+}
+
+/* Controls (zoom buttons) */
+.terrace-canvas .react-flow__controls {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.terrace-canvas .react-flow__controls-button {
+  background: var(--color-bg-secondary);
+  border: none;
+  border-bottom: 1px solid var(--color-border-primary);
+  color: var(--color-text-secondary);
+  width: 28px;
+  height: 28px;
+}
+
+.terrace-canvas .react-flow__controls-button:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+}
+
+.terrace-canvas .react-flow__controls-button:last-child {
+  border-bottom: none;
+}
+
+.terrace-canvas .react-flow__controls-button svg {
+  fill: currentColor;
+}
+
+/* MiniMap */
+.terrace-canvas .react-flow__minimap {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.terrace-canvas .react-flow__minimap-mask {
+  fill: var(--color-bg-primary);
+  fill-opacity: 0.7;
+}
+
+/* Layer bands */
+.terrace-layer {
+  --layer-color: var(--color-border-secondary);
+  width: 100%;
+  height: 100%;
+  border: 1px solid color-mix(in srgb, var(--layer-color) 45%, transparent);
+  border-left: 4px solid var(--layer-color);
+  border-radius: var(--radius-xl);
+  background: color-mix(
+    in srgb,
+    var(--layer-color) var(--layer-band-alpha),
+    var(--color-bg-canvas)
+  );
+}
+
+.terrace-layer--trust {
+  --layer-color: var(--layer-trust);
+}
+.terrace-layer--workloads {
+  --layer-color: var(--layer-workloads);
+}
+.terrace-layer--gpu {
+  --layer-color: var(--layer-gpu);
+}
+.terrace-layer--kubernetes {
+  --layer-color: var(--layer-kubernetes);
+}
+.terrace-layer--talos {
+  --layer-color: var(--layer-talos);
+}
+.terrace-layer--hardware {
+  --layer-color: var(--layer-hardware);
+}
+
+.terrace-layer__label {
+  position: absolute;
+  top: var(--spacing-4);
+  left: var(--spacing-5);
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.terrace-layer__name {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--layer-color);
+}
+
+.terrace-layer__description {
+  font-size: var(--font-size-xs);
+  line-height: 1.4;
+  color: var(--color-text-tertiary);
+}
+
+/* Fact nodes (lifted .workflow-node, renamed) */
+.terrace-node {
+  --node-color: var(--color-border-secondary);
+  width: 240px;
+  background: var(--color-bg-primary);
+  border: 2px solid var(--color-border-primary);
+  border-left: 4px solid var(--node-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.terrace-node--trust {
+  --node-color: var(--layer-trust);
+}
+.terrace-node--workloads {
+  --node-color: var(--layer-workloads);
+}
+.terrace-node--gpu {
+  --node-color: var(--layer-gpu);
+}
+.terrace-node--kubernetes {
+  --node-color: var(--layer-kubernetes);
+}
+.terrace-node--talos {
+  --node-color: var(--layer-talos);
+}
+.terrace-node--hardware {
+  --node-color: var(--layer-hardware);
+}
+
+.terrace-node--selected {
+  border-color: var(--node-color);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--node-color) 25%, transparent);
+}
+
+.terrace-node--planned {
+  border-style: dashed;
+  background: color-mix(in srgb, var(--node-color) 6%, var(--color-bg-primary));
+}
+
+.terrace-node__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-bottom: 1px solid var(--color-border-primary);
+  background: color-mix(in srgb, var(--node-color) 8%, var(--color-bg-secondary));
+  border-radius: 0 var(--radius-lg) 0 0;
+}
+
+.terrace-node__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.terrace-node--status-ok .terrace-node__dot {
+  background: var(--color-success);
+}
+.terrace-node--status-warn .terrace-node__dot {
+  background: var(--color-warning);
+}
+.terrace-node--status-error .terrace-node__dot {
+  background: var(--color-error);
+}
+.terrace-node--status-planned .terrace-node__dot {
+  background: var(--color-accent);
+}
+
+.terrace-node__title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.terrace-node__content {
+  padding: var(--spacing-2) var(--spacing-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.terrace-node__subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+.terrace-node__facts {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.terrace-node__fact {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-xs);
+}
+
+.terrace-node__fact dt {
+  color: var(--color-text-tertiary);
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.terrace-node__fact dd {
+  color: var(--color-text-secondary);
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Handles are where Service edges land. Nothing can be wired by hand until composing arrives. */
+.terrace-node__handle {
+  width: 10px;
+  height: 10px;
+  background: var(--color-bg-tertiary);
+  border: 2px solid var(--color-border-secondary);
+  cursor: default;
+}
+
+.terrace-node__more {
+  font-size: var(--font-size-2xs);
+  color: var(--color-text-muted);
+  padding-top: 2px;
+}
+
+/* Service edges: the cluster's network reaching a workload. Dashed inside the cluster,
+   solid and in the trust colour when a node port or load balancer opens it outward. */
+.terrace-canvas .react-flow__edge.terrace-edge--internal .react-flow__edge-path {
+  stroke: var(--layer-kubernetes);
+  stroke-dasharray: 6 4;
+}
+.terrace-canvas .react-flow__edge.terrace-edge--node .react-flow__edge-path,
+.terrace-canvas .react-flow__edge.terrace-edge--external .react-flow__edge-path {
+  stroke: var(--layer-trust);
+  stroke-width: 2;
+}
+.terrace-canvas .react-flow__edge-textbg {
+  fill: var(--color-bg-elevated);
+}
+.terrace-canvas .react-flow__edge-text {
+  font-size: 11px;
+  fill: var(--color-text-secondary);
+}
+/* The vertical handles exist for edges, not for people: invisible, still valid endpoints. */
+.terrace-node__handle--up,
+.terrace-node__handle--down {
+  opacity: 0;
+  pointer-events: none;
+}

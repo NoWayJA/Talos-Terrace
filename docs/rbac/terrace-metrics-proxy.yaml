@@ -1,0 +1,12 @@
+# OPTIONAL: this is NOT a read-only security boundary. nodes/proxy GET can authorize
+# command execution through the kubelet. Pod/Service proxies reach application endpoints.
+# Kubernetes RBAC cannot restrict these grants to /stats/summary or /metrics.
+# Read README.md here before binding this role. Inventory does not require it.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: terrace-metrics-proxy
+rules:
+  - apiGroups: ['']
+    resources: [nodes/proxy, pods/proxy, services/proxy]
+    verbs: [get]

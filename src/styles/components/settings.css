@@ -1,0 +1,97 @@
+/* Settings page. */
+.settings {
+  padding: var(--spacing-6) var(--spacing-8);
+  overflow-y: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  max-width: 820px;
+}
+
+.settings__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.settings__intro {
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.settings__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-5);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-xl);
+}
+
+.settings__group-title {
+  font-size: var(--font-size-md);
+}
+
+.settings__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.settings__label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.settings__help {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+.settings__tests {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.settings__test {
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  font-size: var(--font-size-sm);
+  min-height: 28px;
+}
+
+.settings__test-label {
+  width: 180px;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+/* What a connection test answered: a wrapping line, never a truncated badge. */
+.settings__test-result {
+  flex-basis: 100%;
+  font-size: var(--font-size-sm);
+  overflow-wrap: anywhere;
+}
+
+.settings__test-result--ok {
+  color: var(--color-success);
+}
+
+.settings__test-result--error {
+  color: var(--color-error);
+}
+
+.settings__problem {
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+}

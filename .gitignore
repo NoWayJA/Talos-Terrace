@@ -1,0 +1,50 @@
+# Dependencies and build output
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+src-tauri/target/
+src-tauri/gen/schemas/
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# Local environment and logs
+.env
+.env.*
+*.log
+
+# Claude Code local overrides
+.claude/settings.local.json
+CLAUDE.md
+
+# Credentials. Terrace reads kubeconfig and talosconfig from where they already
+# live and stores only their paths. No copy of any of these belongs here, ever.
+kubeconfig
+*.kubeconfig
+*kubeconfig*
+talosconfig
+*talosconfig*
+secrets.yaml
+controlplane.yaml
+worker.yaml
+*.pem
+*.key
+*.crt
+.master_key.dev
+*.db
+*.sqlite
+*.sqlite3
+
+# Exported signing identities and SQLite sidecars
+*.p12
+*.pfx
+*.p8
+*.db-*
+*.sqlite-*
+*.sqlite3-*

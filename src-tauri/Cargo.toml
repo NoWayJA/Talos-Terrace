@@ -1,0 +1,75 @@
+[package]
+name = "terrace"
+version = "0.0.1"
+description = "Talos Terrace: a live, layered console for Talos Linux clusters"
+authors = ["Jon Anthony"]
+license = "Apache-2.0"
+repository = "https://github.com/NoWayJA/talos-terrace"
+edition = "2024"
+rust-version = "1.89"
+publish = false
+
+# The library holds everything; `terrace` (desktop) and later `terrace mcp` (M3) are thin
+# entry points over it.
+[lib]
+name = "terrace_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.6", features = [] }
+
+[dependencies]
+tauri = { version = "2.11", features = [] }
+tauri-plugin-opener = "2.5"
+
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+
+tokio = { version = "1.53", features = ["io-util", "macros", "process", "rt-multi-thread", "time", "sync"] }
+futures = "0.3"
+
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-appender = "0.2"
+parking_lot = "0.12"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+dirs = "7.0"
+
+# SQLite with PRAGMA user_version migrations (db/migrations.rs).
+rusqlite = { version = "0.40", features = ["bundled"] }
+
+# Vault: one OS keychain entry (the master key), AES-256-GCM blobs in SQLite.
+# keyring 4 enables the native stores for macOS, Windows and Linux by default.
+keyring = "4.2"
+aes-gcm = "0.10"
+zeroize = { version = "1.8", features = ["derive"] }
+base64 = "0.22"
+
+# Ollama over HTTP. reqwest 0.13 defaults to rustls with the platform verifier.
+reqwest = { version = "0.13", features = ["json"] }
+# Two rustls crypto providers end up compiled in (kube-rs uses `ring`, reqwest's default is
+# `aws-lc-rs`) and rustls refuses to guess between them, so `init_crypto` installs `ring`
+# explicitly at process start.
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12", "logging"] }
+
+# Kubernetes: typed client over rustls; `runtime` brings the watcher and reflector stores. v1_36 is the newest API set k8s-openapi 0.28 ships;
+# newer clusters work, since the core and apps groups Terrace reads are stable across that skew.
+kube = { version = "4.2", default-features = false, features = ["client", "rustls-tls", "ring", "runtime"] }
+k8s-openapi = { version = "0.28", features = ["v1_36"] }
+# Raw API-server requests (the kubelet summary and a metrics exporter through the proxy
+# subresources); the same crate kube-rs already builds its requests with.
+http = "1.5"
+
+[dev-dependencies]
+tempfile = "3.27"
+
+[profile.dev]
+incremental = true
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true

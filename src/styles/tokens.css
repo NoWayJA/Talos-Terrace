@@ -1,0 +1,209 @@
+/**
+ * Design tokens. Lifted from Modz (NoWayJA/Modz, MIT) styles/tokens.css, with a light palette
+ * added (Modz is dark only) and the six layer colours. The layer hexes are mirrored in
+ * pages/Canvas/layers.ts for the MiniMap.
+ */
+
+:root {
+  /* Background */
+  --color-bg-primary: #0a0a0b;
+  --color-bg-secondary: #141416;
+  --color-bg-tertiary: #1c1c1f;
+  --color-bg-elevated: #242428;
+  --color-bg-hover: #2a2a2f;
+  --color-bg-active: #323238;
+  --color-bg-canvas: #0e0e10;
+
+  /* Text */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a1a1a6;
+  --color-text-tertiary: #8e8e96;
+  --color-text-muted: #7e7e86;
+  --color-text-on-accent: #ffffff;
+
+  /* Accent */
+  --color-accent: #6366f1;
+  --color-accent-hover: #818cf8;
+  --color-accent-active: #4f46e5;
+  --color-accent-muted: rgba(99, 102, 241, 0.15);
+  --color-accent-subtle: rgba(99, 102, 241, 0.08);
+
+  /* Semantic */
+  --color-success: #22c55e;
+  --color-success-muted: rgba(34, 197, 94, 0.15);
+  --color-warning: #f59e0b;
+  --color-warning-muted: rgba(245, 158, 11, 0.15);
+  --color-error: #ef4444;
+  --color-error-muted: rgba(239, 68, 68, 0.15);
+  --color-info: #3b82f6;
+  --color-info-muted: rgba(59, 130, 246, 0.15);
+
+  /* Border */
+  --color-border-primary: #2a2a2f;
+  --color-border-secondary: #3a3a40;
+  --color-border-focus: var(--color-accent);
+
+  /* Layers */
+  --layer-trust: #eab308;
+  --layer-workloads: #8b5cf6;
+  --layer-gpu: #22c55e;
+  --layer-kubernetes: #3b82f6;
+  --layer-talos: #f97316;
+  --layer-hardware: #64748b;
+  --layer-band-alpha: 6%;
+
+  /* Typography */
+  --font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, 'Helvetica Neue', sans-serif;
+  --font-family-mono: 'SF Mono', 'Fira Code', Menlo, Consolas, monospace;
+
+  --font-size-2xs: 0.625rem;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.8125rem;
+  --font-size-base: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+
+  /* Motion */
+  --transition-fast: 100ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  /* Layout */
+  --sidebar-width: 200px;
+  --sidebar-width-collapsed: 60px;
+  --header-height: 52px;
+  --palette-width: 232px;
+  --properties-width: 300px;
+
+  color-scheme: dark;
+}
+
+/* Light palette: the system preference when no theme is forced, or an explicit choice. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f6f6f8;
+    --color-bg-tertiary: #ededf1;
+    --color-bg-elevated: #ffffff;
+    --color-bg-hover: #e4e4ea;
+    --color-bg-active: #d9d9e1;
+    --color-bg-canvas: #fafafc;
+
+    --color-text-primary: #17171b;
+    --color-text-secondary: #4b4b55;
+    --color-text-tertiary: #66666f;
+    --color-text-muted: #72727b;
+
+    --color-accent: #4f46e5;
+    --color-accent-hover: #4338ca;
+    --color-accent-active: #3730a3;
+    --color-accent-muted: rgba(79, 70, 229, 0.12);
+    --color-accent-subtle: rgba(79, 70, 229, 0.06);
+
+    --color-success: #15803d;
+    --color-success-muted: rgba(21, 128, 61, 0.12);
+    --color-warning: #b45309;
+    --color-warning-muted: rgba(180, 83, 9, 0.12);
+    --color-error: #b91c1c;
+    --color-error-muted: rgba(185, 28, 28, 0.12);
+    --color-info: #1d4ed8;
+    --color-info-muted: rgba(29, 78, 216, 0.12);
+
+    --color-border-primary: #dcdce3;
+    --color-border-secondary: #c4c4cd;
+
+    --layer-band-alpha: 8%;
+    /* Deeper layer colours: the bright ones vanish as text on a light canvas. */
+    --layer-trust: #a16207;
+    --layer-workloads: #6d28d9;
+    --layer-gpu: #15803d;
+    --layer-kubernetes: #1d4ed8;
+    --layer-talos: #c2410c;
+    --layer-hardware: #475569;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+    color-scheme: light;
+  }
+}
+
+:root[data-theme='light'] {
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f6f6f8;
+  --color-bg-tertiary: #ededf1;
+  --color-bg-elevated: #ffffff;
+  --color-bg-hover: #e4e4ea;
+  --color-bg-active: #d9d9e1;
+  --color-bg-canvas: #fafafc;
+
+  --color-text-primary: #17171b;
+  --color-text-secondary: #4b4b55;
+  --color-text-tertiary: #66666f;
+  --color-text-muted: #72727b;
+
+  --color-accent: #4f46e5;
+  --color-accent-hover: #4338ca;
+  --color-accent-active: #3730a3;
+  --color-accent-muted: rgba(79, 70, 229, 0.12);
+  --color-accent-subtle: rgba(79, 70, 229, 0.06);
+
+  --color-success: #15803d;
+  --color-success-muted: rgba(21, 128, 61, 0.12);
+  --color-warning: #b45309;
+  --color-warning-muted: rgba(180, 83, 9, 0.12);
+  --color-error: #b91c1c;
+  --color-error-muted: rgba(185, 28, 28, 0.12);
+  --color-info: #1d4ed8;
+  --color-info-muted: rgba(29, 78, 216, 0.12);
+
+  --color-border-primary: #dcdce3;
+  --color-border-secondary: #c4c4cd;
+
+  --layer-band-alpha: 8%;
+  --layer-trust: #a16207;
+  --layer-workloads: #6d28d9;
+  --layer-gpu: #15803d;
+  --layer-kubernetes: #1d4ed8;
+  --layer-talos: #c2410c;
+  --layer-hardware: #475569;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  color-scheme: light;
+}

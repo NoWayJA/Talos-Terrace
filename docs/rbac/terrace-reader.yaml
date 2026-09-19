@@ -1,0 +1,25 @@
+# Exactly what Terrace needs from Kubernetes, read-only, for a kubeconfig that is not
+# cluster-admin. Bind it to the user or service account your kubeconfig authenticates as:
+#
+#   kubectl apply -f docs/rbac/terrace-reader.yaml
+#   kubectl create clusterrolebinding terrace-reader --clusterrole=terrace-reader --user=<you>
+#
+# Inventory only. Optional metrics proxy permissions are intentionally separate:
+# see README.md in this directory before binding terrace-metrics-proxy.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: terrace-reader
+rules:
+  - apiGroups: ['']
+    resources: [nodes, namespaces, pods, services, events]
+    verbs: [get, list, watch]
+  - apiGroups: [apps]
+    resources: [deployments]
+    verbs: [get, list, watch]
+  - apiGroups: [kubevirt.io]
+    resources: [virtualmachines, virtualmachineinstances]
+    verbs: [get, list, watch]
+  - apiGroups: [discovery.k8s.io]
+    resources: [endpointslices]
+    verbs: [get, list]

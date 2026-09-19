@@ -1,0 +1,85 @@
+/* Properties panel. Lifted from Modz (NoWayJA/Modz, MIT) .properties-panel, renamed. */
+.properties {
+  width: var(--properties-width);
+  background: var(--color-bg-secondary);
+  border-left: 1px solid var(--color-border-primary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.properties--empty {
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-6);
+  text-align: center;
+  color: var(--color-text-tertiary);
+}
+
+.properties__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+.properties__title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.properties__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.properties__section-title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.properties__meta,
+.properties__facts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.properties__meta > div,
+.properties__facts > div {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+}
+
+.properties__meta dt,
+.properties__facts dt {
+  color: var(--color-text-tertiary);
+}
+
+.properties__meta dd,
+.properties__facts dd {
+  color: var(--color-text-primary);
+  overflow-wrap: anywhere;
+}
+
+.properties__docs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+}

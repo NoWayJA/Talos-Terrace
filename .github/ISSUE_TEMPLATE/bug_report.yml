@@ -1,0 +1,54 @@
+name: Bug report
+description: Something Terrace shows or does is wrong against a real cluster.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Redact anything you would not paste in public: kubeconfigs, talosconfigs,
+        tokens, keys. Addresses and hostnames are yours to redact as you see fit.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what Terrace showed, what you expected instead.
+    validations:
+      required: true
+  - type: input
+    id: talos
+    attributes:
+      label: Talos version
+      placeholder: v1.14.0
+    validations:
+      required: true
+  - type: input
+    id: kubernetes
+    attributes:
+      label: Kubernetes version
+      placeholder: v1.37.0
+    validations:
+      required: true
+  - type: input
+    id: nodes
+    attributes:
+      label: Nodes
+      description: How many control planes and workers, and anything unusual about them.
+      placeholder: 1 control plane with the taint removed
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system running Terrace
+      placeholder: macOS 15.6 on Apple silicon
+    validations:
+      required: true
+  - type: textarea
+    id: probe
+    attributes:
+      label: Probe output
+      description: |
+        The headless probe prints what Terrace reads. From `src-tauri/`, run
+        `cargo run --example probe -- --context <yours>` and paste the part that is wrong,
+        redacted.
+      render: json

@@ -1,0 +1,118 @@
+/* Node library. Lifted from Modz (NoWayJA/Modz, MIT) .node-palette, renamed. */
+.palette {
+  width: var(--palette-width);
+  background: var(--color-bg-secondary);
+  border-right: 1px solid var(--color-border-primary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.palette__header {
+  padding: var(--spacing-3) var(--spacing-4);
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+.palette__title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.palette__hint {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  line-height: 1.4;
+}
+
+.palette__categories {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-2);
+}
+
+.palette__category {
+  margin-bottom: var(--spacing-2);
+}
+
+.palette__category-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--spacing-2);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: left;
+  color: var(--color-text-secondary);
+  font-family: inherit;
+  transition: background var(--transition-fast);
+}
+
+.palette__category-header:hover {
+  background: var(--color-bg-hover);
+}
+
+.palette__category-label {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.palette__category-chevron {
+  color: var(--color-text-tertiary);
+  display: flex;
+}
+
+.palette__nodes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) 0 var(--spacing-1) var(--spacing-3);
+}
+
+.palette__node {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2);
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  cursor: grab;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+  user-select: none;
+}
+
+.palette__node:hover {
+  background: var(--color-bg-hover);
+  border-color: var(--color-accent);
+}
+
+.palette__node:active {
+  cursor: grabbing;
+}
+
+.palette__node-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.palette__node-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.palette__node-description {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  line-height: 1.35;
+}

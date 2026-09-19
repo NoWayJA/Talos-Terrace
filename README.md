@@ -1,8 +1,44 @@
+<div align="center">
+
 # Talos Terrace
 
-**A live, layered console for Talos Linux clusters.** Talos Terrace is a desktop app that shows a
-Talos cluster as the stack it is, from the ground up, and keeps every layer live from the two
-APIs a Talos cluster already exposes:
+### Your whole Talos cluster — bare metal to trust boundary — in one live picture.
+
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/status-early%20(M0)-yellow.svg)](docs/roadmap.md)
+[![Talos](https://img.shields.io/badge/Talos-v1.14-ff7300.svg)](https://www.talos.dev/)
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.37-326ce5.svg)](https://kubernetes.io/)
+[![Platforms](https://img.shields.io/badge/desktop-macOS%20%7C%20Linux%20%7C%20Windows-555.svg)](#develop)
+
+**Installs nothing on your cluster. No agent, no operator, no Helm chart.**<br>
+Just the `talosconfig` and `kubeconfig` you already have.
+
+![The Talos Terrace canvas: six live layers from hardware to the trust boundary](docs/images/talos-terrace-canvas.png)
+
+</div>
+
+## Why
+
+`talosctl get` and `kubectl get` answer questions one at a time, in text, about one resource.
+Nobody holds thirty of those answers in their head at once — so the things that matter across
+layers go unnoticed. Is Secure Boot actually on? Which of those namespaces is `privileged`?
+Which pod is holding the GPU right now? Is that volume encrypted?
+
+Talos Terrace draws all of it at once, from the two APIs your cluster already exposes, and
+keeps it live. **The trust boundary is a layer you can see, not a claim in a runbook.**
+
+|  |  |
+|---|---|
+| 🔒 **The trust boundary, drawn** | Secure Boot, UKI, disk encryption, SELinux, Pod Security, image digests — around your workloads, with the evidence behind each one |
+| ⚡ **Live, not polled** | Watch streams from both APIs. A pod dies, a node upgrades, a VM boots — the canvas changes as it happens |
+| 🎮 **GPU-aware** | Every accelerator the scheduler hands out, and exactly who is holding it. Busy, VRAM, temperature, power |
+| 🖥️ **VMs first-class** | KubeVirt virtual machines get a card like anything else: size, address, disks, Secure Boot state |
+| 📊 **Metrics with nothing installed** | CPU, memory, disk, network and temperature from the kubelet and Talos themselves. No metrics stack required |
+| 🔍 **Your apps, not the machinery** | Every pod traced to the thing you'd actually name. Operators and add-ons fold away into one card each |
+
+## What it shows
+
+Six layers, every one of them live:
 
 ```text
 ┌──────────────────────────────────────────────────────────────────────┐
@@ -20,13 +56,6 @@ first-class object and the trust boundary drawn rather than implied. It uses the
 and `kubeconfig` you already have, installs nothing on the cluster, and every mutating action
 (when they arrive) shows its diff and asks first.
 
-Status: **early (milestone M0), read-only, September 2026. No binaries yet: build from
-source, below.** One cluster at a time, every node in the talosconfig. The canvas renders
-hardware, Talos, Kubernetes, GPU, workload and trust facts and keeps them live: Kubernetes
-objects and events arrive over watch streams, and a change on a Talos node re-reads its
-inventory. Checked against Talos v1.14 and Kubernetes v1.37. Composing and applying come
-next.
-
 **What you run versus what the cluster runs.** Every pod is traced to the thing a person would
 name: a Deployment, a DaemonSet, a Job, a KubeVirt virtual machine, a static control-plane
 pod. Your apps get a card each in the Workloads layer (a virtual machine shows its size,
@@ -34,6 +63,13 @@ address, disks and Secure Boot state). The machinery, operators and add-ons such
 Operator or KubeVirt, folds into one card per namespace with its version and health, and
 Kubernetes' own components into one more. The guess is by namespace; Settings lets you move a
 namespace either way.
+
+## Where it is
+
+**Early — milestone M0, read-only, September 2026. No binaries yet: [build from source](#develop).**
+One cluster at a time, every node in the talosconfig. Kubernetes objects and events arrive over
+watch streams, and a change on a Talos node re-reads its inventory. Checked against Talos v1.14
+and Kubernetes v1.37. Composing and applying come next — see the [roadmap](docs/roadmap.md).
 
 ## Principles
 
@@ -156,10 +192,10 @@ docs/                    roadmap, architecture, decisions, inventory and optiona
 
 ## Lifted from Modz
 
-Terrace starts from proven pieces of [Modz](https://github.com/NoWayJA/Modz) (MIT): the React
-Flow canvas pattern and its CSS, the design tokens, the ESLint and Prettier setup, the services
-layer, the vault, the logging module, the Tauri command conventions and the signing runbooks.
-Each lifted file carries a header saying so.
+Terrace starts from proven pieces of Modz (MIT), the author's own Tauri 2 desktop platform:
+the React Flow canvas pattern and its CSS, the design tokens, the ESLint and Prettier setup,
+the services layer, the vault, the logging module, the Tauri command conventions and the
+signing runbooks. Each lifted file carries a header saying so.
 
 ## Contributing and security
 

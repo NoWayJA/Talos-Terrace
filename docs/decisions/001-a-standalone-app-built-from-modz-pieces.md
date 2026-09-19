@@ -5,9 +5,9 @@
 ## Context
 
 Terrace began as the console for a single-node Talos appliance whose owner already had a
-Tauri 2 desktop platform, [Modz](https://github.com/NoWayJA/Modz), with a React Flow canvas,
-a design system, an encrypted vault, a services layer and an agent engine with an MCP client.
-The question was where the console should live.
+Tauri 2 desktop platform, Modz, with a React Flow canvas, a design system, an encrypted
+vault, a services layer and an agent engine with an MCP client. The question was where the
+console should live.
 
 ## Options considered
 

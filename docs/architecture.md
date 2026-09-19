@@ -148,10 +148,10 @@ capabilities. Details and the reporting process are in [SECURITY.md](../SECURITY
 
 ## Lifted from Modz
 
-Terrace started from proven pieces of [Modz](https://github.com/NoWayJA/Modz) (MIT): the React
-Flow canvas pattern and its CSS, the design tokens, the ESLint and Prettier setup, the services
-layer, the vault, logging, the Tauri command conventions and the signing runbooks. Each lifted
-file carries a header saying so; the notice is in [NOTICE](../NOTICE). Fixed on the way in: a
-real CSP and no `withGlobalTauri`, one `Page` union, an error boundary, no raw `invoke` outside
+Terrace started from proven pieces of Modz (MIT), the author's own Tauri 2 desktop platform:
+the React Flow canvas pattern and its CSS, the design tokens, the ESLint and Prettier setup,
+the services layer, the vault, logging, the Tauri command conventions and the signing
+runbooks. Each lifted file carries a header saying so; the notice is in [NOTICE](../NOTICE).
+Fixed on the way in: a real CSP and no `withGlobalTauri`, one `Page` union, an error boundary, no raw `invoke` outside
 the services layer, no native dialogs, no inline styles, `user_version` migrations, async
 commands, no `lock().unwrap()`, one error type, pinned dependencies, CI from the first commit.

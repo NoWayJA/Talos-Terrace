@@ -51,7 +51,7 @@ jobs:
       # tauri::generate_context! embeds frontendDist, so the web bundle must exist first.
       - run: npm ci
       - run: npx vite build
-      - uses: dtolnay/rust-toolchain@6c977a6ca4077a0ceb28ffbe03f59d46e9ac8772 # v1 (stable)
+      - uses: dtolnay/rust-toolchain@683b588c487a69d01f6c6ddf40f036ff682cc2c8 # v1 (stable)
         with:
           toolchain: stable
           components: clippy, rustfmt
